@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
+from django.contrib.auth.decorators import login_required
 
 from .models import Shark
 
@@ -12,8 +13,10 @@ def about(request):
 def list(request):
     sharks = Shark.objects.all()
     return render(request, "shark-list.html", { "sharks": sharks })
-
+    
+@login_required
 def show(request, id):
     shark = get_object_or_404(Shark, pk=id)
-    return HttpResponse(f"<h1>{shark.name}</h1>")
+    # return HttpResponse(f"<h1>{shark.name}</h1>")
+    return render(request, 'shark-show.html', {"shark": shark})
     

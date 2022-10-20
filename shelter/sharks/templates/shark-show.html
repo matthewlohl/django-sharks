@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Sharks - {{shark.name}}{% endblock title %}
+{% block heading %}<h1>{{shark.name}} Shark (age: {{shark.age}})</h1>{% endblock heading %}
+{% block content %}
+<h2>{{ shark.name }} is a {{shark.species}} who enjoys swimming and fish</h2>
+<h2>{{shark.species.region}}</h2>
+
+{% endblock content %}
